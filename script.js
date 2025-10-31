@@ -79,7 +79,7 @@ function convertCurrency() {
   const amountInGalleon = amt * fromRateToGalleon;
   const converted = amountInGalleon / toRateToGalleon;
 
-  let output = `${from} ${formatNumber(amt)} = ${to} ${formatNumber(converted)}`;
+  let output = `${to} ${formatNumber(converted)}`;
 
   if (to === 'Galleon' || from === 'Galleon') {
     const galleonValue = to === 'Galleon' ? converted : amt;
@@ -110,3 +110,4 @@ window.addEventListener('load', () => {
   loadCurrencies();
   loadMarqueeRates();
 });
+
