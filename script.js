@@ -30,6 +30,7 @@ const amount = document.getElementById('amount');
 const result = document.getElementById('result');
 const convertBtn = document.getElementById('convertBtn');
 
+
 function formatNumber(num) {
   return num.toLocaleString('id-ID', {
     minimumFractionDigits: 2,
@@ -65,7 +66,7 @@ function loadCurrencies() {
 function convertCurrency() {
   const from = fromCurrency.value;
   const to = toCurrency.value;
-  const amt = parseFloat(amount.value.replace(/\./g, '').replace(',', '.'));
+  const amt = parseFloat(amount.value);
 
   if (isNaN(amt) || amt <= 0) {
     result.textContent = 'Masukkan jumlah yang valid.';
@@ -74,10 +75,12 @@ function convertCurrency() {
 
   const fromRateToGalleon = 1 / baseRates[from];
   const toRateToGalleon = 1 / baseRates[to];
+
   const amountInGalleon = amt * fromRateToGalleon;
   const converted = amountInGalleon / toRateToGalleon;
 
   let output = `${from} ${formatNumber(amt)} = ${to} ${formatNumber(converted)}`;
+
   if (to === 'Galleon' || from === 'Galleon') {
     const galleonValue = to === 'Galleon' ? converted : amt;
     const wizardBreakdown = convertToWizardMoney(galleonValue);
@@ -88,20 +91,7 @@ function convertCurrency() {
 }
 
 convertBtn.addEventListener('click', convertCurrency);
-
-// === Fitur format otomatis saat mengetik ===
-amount.addEventListener('input', (e) => {
-  let value = e.target.value.replace(/\D/g, '');
-  if (value) {
-    const number = parseFloat(value);
-    e.target.value = number.toLocaleString('id-ID', {
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2
-    });
-  } else {
-    e.target.value = '';
-  }
-});
+window.addEventListener('load', loadCurrencies);
 
 function loadMarqueeRates() {
   const marquee = document.getElementById('rateMarquee');
@@ -113,7 +103,7 @@ function loadMarqueeRates() {
     }
   });
 
-  marquee.textContent = text + text;
+   marquee.textContent = text + text;
 }
 
 window.addEventListener('load', () => {
