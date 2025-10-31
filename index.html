@@ -1,28 +1,25 @@
-<!doctype=html>
+<!doctype html>
 <html lang="en">
 <head>
-  <div id="header">
-    <h1>Arcus Bank - Money Changer</h1>
-    <div class="marquee">
-    <div class="marquee-content" id="rateMarquee">
-    </div>
-  </div>
-  </div>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Currency Converter</title>
+  <title>Arcus Bank - Money Changer</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
- 
+  <div id="header">
+    <h1>Arcus Bank - Money Changer</h1>
+    <div class="marquee">
+      <div class="marquee-content" id="rateMarquee"></div>
+    </div>
+  </div>
+
   <div class="container">
     <img src="https://od.lk/s/OThfNDIxNzIyMjRf/AB.png" style="width:50%">
     <div class="converter">
-      <input type="number" id="amount" placeholder="Amount" />
-      
+      <input type="text" id="amount" placeholder="Amount" />
       <select id="fromCurrency"></select>
       <select id="toCurrency"></select>
-      
       <button id="convertBtn">Convert</button>
     </div>
     <div id="result"></div>
